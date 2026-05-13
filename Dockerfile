@@ -1,14 +1,9 @@
-# Use Java base image
-FROM openjdk:21-jdk-slim
+FROM eclipse-temurin:21
 
-# Set working directory
 WORKDIR /app
 
-# Copy jar file
-COPY target/*.jar app.jar
+COPY helloworld.java .
 
-# Expose application port
-EXPOSE 8082
+RUN javac helloworld.java
 
-# Run application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+CMD ["java", "helloworld"]
