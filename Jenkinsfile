@@ -11,13 +11,13 @@ pipeline {
 
         stage('Build Java Application') {
             steps {
-                bat 'javac HelloWorld.java'
+                bat 'javac helloworld.java'
             }
         }
 
         stage('Run Java Program') {
             steps {
-                bat 'java HelloWorld'
+                bat 'java helloworld'
             }
         }
 
@@ -30,7 +30,7 @@ pipeline {
         stage('Login to DockerHub') {
             steps {
                 withCredentials([usernamePassword(
-                credentialsId: 'Docker-credentials',//give your credentials mentioned above
+                credentialsId: 'Docker-cred',//give your credentials mentioned above
                 usernameVariable: 'USER',
                 passwordVariable: 'PASS')]) {
 
